@@ -1,0 +1,72 @@
+<!-- Category List Modal -->
+<div class="modal fade" id="categoriesListModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark text-light px-3">
+            <div class="modal-header row-cols-3">
+                <div class="col-6"><h5 class="modal-title">Categories List</h5></div>
+                <div class="col-3">
+                    
+                </div>
+                <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-3" style="height: 75vh; overflow: hidden;">
+                <div class="row row-cols-2">
+                    <form id="addCategoryForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="categoryName" placeholder="Enter Category Name" required>
+                            <button type="submit" class="btn btn-sm btn-success">Add Category</button>
+                        </div>
+                    </form>
+                    <form class="m-0 no-text-wrap" id="searchCategoriesForm">
+                        <div class="input-group">
+                            <input type="search" class="form-control form-control-sm text-truncate" name="search" id="searchCategories" placeholder="Search Category">
+                            <button class="btn btn-sm btn-success text-truncate" type="submit" value="Search" id="searchButton">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="table-responsive" style="height: 80%;">
+                    <table class="table table-dark text-light" style="overflow: auto;">
+                        <thead>
+                            <tr>
+                                <!-- <th class="d-none">ID</th> -->
+                                <th>Category Name</th>
+                                <!-- <th>Created On</th> -->
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoriesTable">
+                            <!-- Categories will be populated via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Category Modal -->
+<div class="modal fade" id="editCategoryModal" tabindex="-1">
+    <div class="modal-dialog  modal-dialog-centered ">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Category</h5>
+                <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-3">
+                <form id="editCategoryForm">
+                    
+                    <div class="">
+                        <input type="hidden" id="editCategoryId">
+                        <label for="editCategoryName" class="form-label">Category Name</label>
+                        <input type="text" class="form-control" id="editCategoryName" required>
+                    </div>
+                    <hr>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+{% extends 'home/base.html' %}
+
+{% block body %}
+<div class="card p-3 bg-dark text-light text-truncate" style="height: 100%; overflow:hidden">
+  <div class="card-header">
+    <h4 class="fs-4">Sales Dashboard</h4>
+  </div>
+  <div class="card-body">
+    <div class="row row-cols-2  justify-content-between" style="height: 100%;">
+      <div class="row row-cols-2" style="height:100%; overflow:auto">
+        <div class="p-3"> 
+          <div class="card bg-success text-light text-truncate">
+              <div class="card-header"><b>Today's Sales</b></div>
+              <div class="card-body "><p id="dailySales">0.00</p></div>
+          </div>
+        </div>
+        <div class="p-3"> 
+          <div class="card bg-success text-light text-truncate">
+            <div class="card-header"><b>Yesterday's Sales</b></div>
+            <div class="card-body"><p id="yesterdaySales">0.00</p></div>
+          </div>
+        </div>
+        <div class="p-3"> 
+          <div class="card bg-success text-light text-truncate">
+            <div class="card-header"><b>This Week's Sales</b></div>
+            <div class="card-body"><p id="weeklySales">0.00</p></div>
+          </div>
+        </div>
+        <div class="p-3"> 
+          <div class="card bg-success text-light text-truncate">
+            <div class="card-header"><b>This Month's Sales</b></div>
+            <div class="card-body"><p id="monthlySales">0.00</p></div>
+          </div>
+        </div>
+        <div class="p-3"> 
+          <div class="card bg-success text-light text-truncate">
+            <div class="card-header"><b>Last Month's Sales</b></div>
+            <div class="card-body"><p id="lastMonthSales">0.00</p></div>
+          </div>
+        </div>
+        <div class="p-3"> 
+          <div class="card bg-success text-light text-truncate">
+            <div class="card-header"><b>This Year's Sales</b></div>
+            <div class="card-body"><p id="yearlySales">0.00</p></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row row-col-1" style="height:100%; overflow:auto">
+        <div class="p-3">
+          <div class="card bg-dark text-light border border-light">
+            <div class="card-header fs-5" ><b>Last 7 Sales</b></div>
+            <div class="card-body table-responsive" style="height:100%">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="lastOrders">
+                <!-- Orders populated via JavaScript -->
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}
+
+{% block JS %}
+  <script src="static/js/dashboard.js"></script>
+{% endblock JS %}

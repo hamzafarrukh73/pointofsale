@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>POS</title>
+    <link href="static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/main.css" rel="stylesheet">
+    {% block head %}
+    
+    {% endblock head %}
+  </head>
+  <body class="container-fluid vh-100 p-3 bg-dark text-success" style="overflow: hidden;">
+    <div class="row h-100">
+      <div class="col-2 h-100" >
+        {% include "home/navbar.html" %}
+      </div>
+      <div class="col h-100">
+        {% block body %} 
+              
+        {% endblock body %}
+      </div>
+    </div>
+    {% block JS %} 
+        
+    {% endblock JS %}
+    <script src="static/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>

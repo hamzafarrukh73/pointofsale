@@ -1,0 +1,80 @@
+{% extends 'home/base.html' %}
+
+{% block body %}
+<div class="card bg-dark text-light h-100" style="overflow:hidden">
+  <div class="card-header">
+    <div class="d-block px-1">
+      <h3 class="m-0">Sales Dashboard</h3>
+    </div>
+  </div>
+  <div class="card-body" style="overflow-y: auto; overflow-x: hidden;">
+    <div class="row row-cols-2  m-0 h-100">
+      <!-- Left Side -->
+      <div class="card bg-dark text-light h-100">
+        <div class="card-body row row-cols-1 row-cols-lg-2 m-0 align-items-center" style="overflow: auto;">
+          <div class=""> 
+            <div class="card bg-success text-light">
+                <div class="card-header text-truncate"><b>Today's Sales</b></div>
+                <div class="card-body text-truncate"><p id="dailySales">0.00</p></div>
+            </div>
+          </div>
+          <div class=""> 
+            <div class="card bg-success text-light">
+              <div class="card-header text-truncate"><b>Yesterday's Sales</b></div>
+              <div class="card-body text-truncate"><p id="yesterdaySales">0.00</p></div>
+            </div>
+          </div>
+          <div class=""> 
+            <div class="card bg-success text-light">
+              <div class="card-header text-truncate"><b>This Week's Sales</b></div>
+              <div class="card-body text-truncate"><p id="weeklySales">0.00</p></div>
+            </div>
+          </div>
+          <div class=""> 
+            <div class="card bg-success text-light">
+              <div class="card-header text-truncate"><b>This Month's Sales</b></div>
+              <div class="card-body text-truncate"><p id="monthlySales">0.00</p></div>
+            </div>
+          </div>
+          <div class=""> 
+            <div class="card bg-success text-light">
+              <div class="card-header text-truncate"><b>Last Month's Sales</b></div>
+              <div class="card-body text-truncate"><p id="lastMonthSales">0.00</p></div>
+            </div>
+          </div>
+          <div class=""> 
+            <div class="card bg-success text-light">
+              <div class="card-header text-truncate"><b>This Year's Sales</b></div>
+              <div class="card-body text-truncate"><p id="yearlySales">0.00</p></div>
+            </div>
+          </div>
+        </div>
+      </div>  
+      <!-- Right Side -->
+      <div class="card h-100 bg-dark text-light">
+        <div class="card-header">
+          <h5 class="text-truncate m-0">Last 10 Sales</h5>
+        </div>
+        <div class="card-body table-responsive">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="lastOrders">
+              <!-- Orders populated via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock body %}
+
+{% block JS %}
+  <script src="static/js/dashboard.js"></script>
+{% endblock JS %}

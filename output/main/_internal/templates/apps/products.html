@@ -1,0 +1,178 @@
+{% extends 'home/base.html' %}
+
+{% block body %}
+<div class="card h-100 bg-dark text-light">
+    <div class="card-header m-0">
+        <div class="row row-cols-3 m-0">
+            <div class="d-block px-1 h-25">
+                <h3 class="m-0">Products List</h3>
+            </div>
+            <div class="d-flex justify-content-end gap-2 h-25">
+                <button class="btn btn-sm btn-success d-block text-truncate" style="width: 40%;" onclick="openAddProductModal()">Add Product</button>
+                <button class="btn btn-sm btn-success d-block text-truncate" style="width: 40%;" onclick="openCategoriesListModal()">Category List</button>
+            </div>
+            <div class="d-block h-25">
+                <form class="m-0 no-text-wrap" id="searchProductsForm">
+                    <div class="input-group">
+                        <input type="search" class="form-control form-control-sm text-truncate" name="search" id="searchProducts" placeholder="Search Product">
+                        <button class="btn btn-sm btn-success text-truncate" type="submit" value="Search" id="searchButton">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-body" style="overflow:auto">
+        <div class="table-responsive">
+            <table class="table bg-dark text-light">
+                <thead>
+                    <tr>
+                        <!-- <th>ID</th> -->
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTable">
+                    <!-- Items populated via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content bg-dark text-light px-3">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Product</h5>
+                <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-3" style="height: 75vh; overflow: hidden;">
+                <form id="addProductForm" style="height: 80%;">
+                    <div class="row row-cols-2 m-0 h-100">
+                        <div class="col-7 d-flex flex-column gap-2 h-100" style="overflow: auto;">
+                            <div>
+                                <label for="productName" class="m-0">Product Name <span class="d-none" id="invalidProductName">Invalid Name</span></label>
+                                <input type="text" class="form-control form-control-sm" id="productName" placeholder="Enter Product Name" required>
+                            </div>
+                            <div>
+                                <label for="productPrice">Unit Price</label>
+                                <input type="number" step="1" class="form-control form-control-sm" min="0" id="productPrice" placeholder="Enter Price" required>
+                            </div>
+                            <div>
+                                <label for="productStock">Initial Stock</label>
+                                <input type="number" step="1" class="form-control form-control-sm" min="0" id="productStock" placeholder="Enter Stock (Optional)">
+                            </div>
+                            <div>
+                                <label for="productCategory">Category</label>  
+                                <select class="form-select form-select-sm" id="productCategory" required>
+                                    <option value="">Select Category</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="productImage">Product Image</label>
+                                <input type="file" class="form-control form-control-sm" id="productImage" accept="image/*">
+                            </div>
+                        </div>
+                        <!-- <div class="col-1 border-end border-light">
+
+                        </div> -->
+                        <div class="col-5 h-100">
+                            <div class="card bg-dark text-light h-100">
+                                <div class="card-header">
+                                    <h3 class="text-center text-truncate m-0 p-1">Preview</h3>
+                                </div>
+                                <div class="card-body" style="height: 80%;">
+                                    <div class="d-flex justify-content-center h-100">
+                                        <img src="static/images/no_preview.png" alt="" class="img-fluid rounded" id="addProductPreview">
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-success justify-content-end">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content bg-dark text-light px-3">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-3" style="height: 75vh; overflow: hidden;">
+                <form id="editProductForm" style="height: 80%;">
+                    <div class="row row-cols-2 m-0 h-100">
+                        <div class="col-7 d-flex flex-column gap-2 h-100" style="overflow: auto;">
+                            <input type="hidden" id="editProductId">
+                            <div>
+                                <label for="editProductName" class="m-0">Product Name <span class="d-none" id="invalidProductName">Invalid Name</span></label>
+                                <input type="text" class="form-control form-control-sm" id="editProductName" placeholder="Enter Product Name" required>
+                            </div>
+                            <div>
+                                <label for="editProductPrice">Unit Price</label>
+                                <input type="number" step="1" class="form-control form-control-sm" min="0" id="editProductPrice" placeholder="Enter Price" required>
+                            </div>
+                            <div>
+                                <label for="editProductStock">Remaining Stock</label>
+                                <input type="number" step="1" class="form-control form-control-sm" min="0" id="editProductStock" placeholder="Enter Stock" required>
+                            </div>
+                            <div>
+                                <label for="editProductCategory">Category</label>  
+                                <select class="form-select form-select-sm" id="editProductCategory" required>
+                                    <option value="">Select Category</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="editProductImage">Product Image</label>
+                                <input type="file" class="form-control form-control-sm" id="editProductImage" accept="image/*">
+                            </div>
+                        </div>
+                        <!-- <div class="col-1 border-end border-light">
+
+                        </div> -->
+                        <div class="col-5 h-100">
+                            <div class="card bg-dark text-light h-100">
+                                <div class="card-header">
+                                    <h3 class="text-center text-truncate m-0 p-1">Preview</h3>
+                                </div>
+                                <div class="card-body" style="height: 80%;">
+                                    <div class="d-flex justify-content-center h-100">
+                                        <p class="d-none" id="editProductOriginalImage"></p>
+                                        <img src="static/images/no_preview.png" alt="" class="img-fluid rounded" id="editProductPreview">
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-success justify-content-end">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "apps/categories.html" %}
+
+{% include "utilities/confirm_delete.html" %}
+{% endblock %}
+
+{% block JS %}
+<script src="static/js/products.js"></script>
+<script src="static/js/categories.js"></script>
+{% endblock %}

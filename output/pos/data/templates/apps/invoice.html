@@ -1,0 +1,63 @@
+<!-- Invoice Template (Hidden) -->
+<div id="invoiceTemplate" class="d-none">
+    <div class="container p-4">
+        <div class="col">
+            <p class="mb-1"><strong></strong> <span id="invoiceDate"></span></p>
+        </div>
+        <!-- Logo -->
+        <div class="text-center mb-2">
+            <img src="/static/images/logo.jpg" alt="Company Logo" class="mb-2" style="max-height: 160px;">
+            <p>Khanpur Mall, Nawan Kot Chowk</p>
+            <p>+92 3299699299 | +92 3084700887</p>
+        </div>
+        <h4 class="text-center mb-2 border border-dark">Token #<span id="invoiceNumber"></span></h4>
+        <div class="row mb-2">
+            
+            <div class="col-6 text-start">
+                <p><strong>Type: </strong><span id="invoiceOrderType"></span></p>
+            </div>
+            <div id="invoiceTable" class="col-6 text-end d-none">
+                <p><strong>Table No.  <span id="invoiceTableNumber"></span></strong></p>
+            </div>
+        </div>
+        <table class="table table-borderless">
+            <thead class="border-bottom border-dark">
+                <tr>
+                    <th colspan="2">Deal</th>
+                    <th>Price</th>
+                    <th>Qty.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="invoiceItems">
+            </tbody>
+            <tfoot class="border-top border-dark">
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="1">Total:</td>
+                    <td colspan="1"></td>
+                    <td><span id="invoiceTotal"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="1">Discount:</td>
+                    <td colspan="1"></td>
+                    <td><span id="invoiceDiscount"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td class="border-top border-dark" colspan="1"><strong>G.Total:</strong></td>
+                    <td class="border-top border-dark" colspan="1"></td>
+                    <td class="border-top border-dark"><strong><span id="invoiceGrandTotal"></span></strong></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center mt-4">
+            <h6 class="mb-1">Thanks for Being Our Customer</h6>
+        </div>
+        <div class="text-center mt-3">
+            <p>App Developed by Hamza F.</p>
+            <p>+92 3147864828 | +92 3156446844</p>
+        </div>
+    </div>
+</div>

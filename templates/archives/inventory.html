@@ -1,0 +1,66 @@
+{% extends 'home/base.html' %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Inventory Management</h1>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Main</a>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="searchInventory" placeholder="Search items...">
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Item ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryTable">
+                        <!-- Inventory items populated via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Restock Modal -->
+<div class="modal fade" id="restockModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Restock Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="restockForm">
+                    <input type="hidden" id="restockItemId">
+                    <div class="mb-3">
+                        <label for="restockQuantity" class="form-label">Quantity to Add</label>
+                        <input type="number" class="form-control" id="restockQuantity" value="1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Stock</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block JS %}
+<script src="{{ url_for('static', filename='js/inventory.js') }}"></script>
+{% endblock %}
